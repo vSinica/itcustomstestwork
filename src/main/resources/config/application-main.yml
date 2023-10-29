@@ -1,0 +1,74 @@
+server:
+  port : 8080
+spring:
+  application:
+    name: itcustomtestwork
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  jpa:
+    open-in-view: false
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+
+      ddl-auto: none
+    properties:
+      hibernate:
+        #        jdbc:
+        #          batch_size: 100
+        jdbc:
+          time_zone: UTC
+        query:
+          in_clause_parameter_padding: true
+        temp:
+          use_jdbc_metadata_defaults: false
+    generate-ddl: false
+  datasource:
+    name: itcustomtestwork
+    url: jdbc:h2:mem:itcustomtestwork
+    username: h2
+    password: 123456
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+  flyway:
+    baseline-on-migrate: true
+    out-of-order: true
+
+
+weather-api:
+  yandex:
+    base-url: "https://api.weather.yandex.ru/v2/forecast"
+    token-header-name: "X-Yandex-API-Key"
+    token: "d6a321cd-afcd-4774-8061-ad5597752dad"
+  ninja-api:
+    base-url: "https://api.api-ninjas.com/v1/weather"
+    token-header-name: "X-Api-Key"
+    token: "Vs+Nwx4vIOwehUJ7+OLJ4A==p4cQCxFdTqpYz17T"
+  weather-api:
+    base-url: "https://api.weatherapi.com/v1/current.json"
+    token-param-name: "key"
+    token: "0f4c8a4a180346d3bcb113220232010 "
+
+update-rate-time-weathers: '#{60*1000}'
+
+
+city-date-list-to-find: cityDateList.txt
+
+
+logging:
+  level:
+    ROOT: info
+    org.springframework.web.reactive.function.client.ExchangeFunctions: trace
+    io.minery: trace
+    org.hibernate.SQL: INFO
+    io.swagger.models.parameters.AbstractSerializableParameter: error
+    springfox.documentation.schema.property.CachingModelPropertiesProvider: error
+    #    io.r2dbc.postgresql.QUERY: DEBUG # for queries
+    #    io.r2dbc.postgresql.PARAM: DEBUG # for parameters
+    org.springframework.r2dbc: INFO
+    #    reactor.netty: debug
+    reactor.netty.http.client: INFO
+    org.springframework.orm.jpa: INFO
+    org.springframework.transaction: INFO

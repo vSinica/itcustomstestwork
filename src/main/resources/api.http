@@ -1,0 +1,27 @@
+###
+GET http://localhost:8080/getWeather
+Content-Type: application/json
+
+{
+  "city": "novosibirsk",
+  "date": "2023-10-28 11:20:07"
+}
+
+###
+GET http://localhost:8080/getWeather
+Content-Type: application/json
+
+{
+  "city": "novosibirsk"
+}
+
+###
+GET http://api.api-ninjas.com/v1/weather?city=novosibirsk
+X-Api-Key: Vs+Nwx4vIOwehUJ7+OLJ4A==p4cQCxFdTqpYz17T
+
+###
+GET https://api.weatherapi.com/v1/current.json?key=0f4c8a4a180346d3bcb113220232010&q=novosibirsk
+
+###
+GET https://api.weather.yandex.ru/v2/forecast?lat=55.04&lon=82.93&limit=1&hours=false
+X-Yandex-API-Key: d6a321cd-afcd-4774-8061-ad5597752dad
